@@ -36,7 +36,6 @@ class _CustomOperation(_TriggeredOperation):
     def attach(self, simulation):
         self._cpp_obj = getattr(_hoomd, self._cpp_class_name)(
             simulation.state._cpp_sys_def, self._action)
-
         super().attach(simulation)
         self._action.attach(simulation)
 
