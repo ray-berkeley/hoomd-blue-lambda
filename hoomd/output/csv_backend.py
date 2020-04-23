@@ -1,8 +1,8 @@
 from sys import stdout
 from math import log10
 from hoomd.util import dict_flatten
-from hoomd.analyze.python_analyzer import _CustomAnalyzer
-from hoomd.analyze.python_analyzer import _InternalPythonAnalyzer
+from hoomd.analyze.python_analyzer import _CustomAnalyzerAction
+from hoomd.analyze.python_analyzer import _InternalCustomAnalyzer
 from hoomd.operation import _Analyzer
 
 
@@ -71,7 +71,7 @@ class _Formatter:
             return self._str_format.format(value, width=column_width)
 
 
-class _CSVInternal(_CustomAnalyzer):
+class _CSVInternal(_CustomAnalyzerAction):
     """Implements the logic for a simple text based logger backend."""
 
     def __init__(self, logger, output=stdout, sep='.',
@@ -140,7 +140,7 @@ class _CSVInternal(_CustomAnalyzer):
         self.log()
 
 
-class CSV(_InternalPythonAnalyzer, _Analyzer):
+class CSV(_InternalCustomAnalyzer, _Analyzer):
     """A space separate value file backend for a Logger.
 
     This can serve as a way to output scalar simulation data to standard out.
