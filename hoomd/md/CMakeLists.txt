@@ -82,6 +82,7 @@ set(_md_headers ActiveForceComputeGPU.h
                 EvaluatorPairGauss.h
                 EvaluatorPairGB.h
                 EvaluatorPairLJ.h
+                EvaluatorPairLJLambda.h
                 EvaluatorPairLJ1208.h
                 EvaluatorPairMie.h
                 EvaluatorPairMoliere.h
