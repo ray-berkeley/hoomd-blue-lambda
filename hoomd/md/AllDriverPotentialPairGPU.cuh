@@ -21,6 +21,10 @@
 cudaError_t gpu_compute_ljtemp_forces(const pair_args_t& pair_args,
                                       const Scalar2 *d_params);
 
+//! Compute lj lambda pair forces on the GPU with PairEvaluatorLJ Lambda
+cudaError_t gpu_compute_ljlambdatemp_forces(const pair_args_t& pair_args,
+                                            const Scalar2 *d_params);
+
 //! Compute gauss pair forces on the GPU with PairEvaluatorGauss
 cudaError_t gpu_compute_gauss_forces(const pair_args_t& pair_args,
                                      const Scalar2 *d_params);
