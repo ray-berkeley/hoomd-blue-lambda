@@ -18,6 +18,7 @@
 #include "ConstraintSphere.h"
 #include "OneDConstraint.h"
 #include "Enforce2DUpdater.h"
+#include "EvaluatorPairLJLambda.h"
 #include "EvaluatorTersoff.h"
 #include "EvaluatorSquareDensity.h"
 #include "FIREEnergyMinimizer.h"
@@ -104,6 +105,21 @@ namespace py = pybind11;
 */
 
 //! Function to export the tersoff parameter type to python
+void export_lj_lambda_params(py::module& m)
+{
+    py::class_<lj_lambda_params>(m, "lj_lambda_params")
+        .def(py::init<>())
+        .def_readwrite("lj1", &lj_lambda_params::lj1)
+        .def_readwrite("lj2", &lj_lambda_params::lj2)
+        .def_readwrite("lam", &lj_lambda_params::lam)
+        .def_readwrite("rwcasq", &lj_lambda_params::rwcasq)
+        .def_readwrite("wca_shift", &lj_lambda_params::wca_shift)
+        ;
+
+    m.def("make_lj_lambda_params", &make_lj_lambda_params);
+}
+
+//! Function to export the tersoff parameter type to python
 void export_tersoff_params(py::module& m)
 {
     py::class_<tersoff_params>(m, "tersoff_params")
@@ -121,7 +137,6 @@ void export_tersoff_params(py::module& m)
 
     m.def("make_tersoff_params", &make_tersoff_params);
 }
-
 
 //! Function to make the Fourier parameter type
 inline pair_fourier_params make_pair_fourier_params(py::list a, py::list b)
@@ -255,6 +270,7 @@ PYBIND11_MODULE(_md, m)
     export_PotentialPair<PotentialPairBuckingham>(m, "PotentialPairBuckingham");
     export_PotentialPair<PotentialPairLJ>(m, "PotentialPairLJ");
     export_PotentialPair<PotentialPairLJLambda>(m, "PotentialPairLJLambda");
+    export_lj_lambda_params(m);
     export_PotentialPair<PotentialPairLJ1208>(m, "PotentialPairLJ1208");
     export_PotentialPair<PotentialPairGauss>(m, "PotentialPairGauss");
     export_PotentialPair<PotentialPairSLJ>(m, "PotentialPairSLJ");
@@ -314,6 +330,7 @@ PYBIND11_MODULE(_md, m)
     export_PotentialPairGPU<PotentialPairBuckinghamGPU, PotentialPairBuckingham>(m, "PotentialPairBuckinghamGPU");
     export_PotentialPairGPU<PotentialPairLJGPU, PotentialPairLJ>(m, "PotentialPairLJGPU");
     export_PotentialPairGPU<PotentialPairLJLambdaGPU, PotentialPairLJLambda>(m, "PotentialPairLJLambdaGPU");
+    export_lj_lambda_params(m);
     export_PotentialPairGPU<PotentialPairLJ1208GPU, PotentialPairLJ1208>(m, "PotentialPairLJ1208GPU");
     export_PotentialPairGPU<PotentialPairGaussGPU, PotentialPairGauss>(m, "PotentialPairGaussGPU");
     export_PotentialPairGPU<PotentialPairSLJGPU, PotentialPairSLJ>(m, "PotentialPairSLJGPU");
