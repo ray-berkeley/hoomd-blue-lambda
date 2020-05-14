@@ -9,6 +9,7 @@
 
 #include "PotentialPair.h"
 #include "EvaluatorPairLJ.h"
+#include "EvaluatorPairLJLambda.h"
 #include "EvaluatorPairGauss.h"
 #include "EvaluatorPairYukawa.h"
 #include "EvaluatorPairEwald.h"
@@ -44,6 +45,8 @@
 
 //! Pair potential force compute for lj forces
 typedef PotentialPair<EvaluatorPairLJ> PotentialPairLJ;
+//! Pair potential force compute for lj lambda forces
+typedef PotentialPair<EvaluatorPairLJLambda> PotentialPairLJLambda;
 //! Pair potential force compute for gaussian forces
 typedef PotentialPair<EvaluatorPairGauss> PotentialPairGauss;
 //! Pair potential force compute for slj forces
@@ -84,6 +87,8 @@ typedef PotentialPair<EvaluatorPairFourier> PotentialPairFourier;
 #ifdef ENABLE_CUDA
 //! Pair potential force compute for lj forces on the GPU
 typedef PotentialPairGPU< EvaluatorPairLJ, gpu_compute_ljtemp_forces > PotentialPairLJGPU;
+//! Pair potential force compute for lj lambda forces on the GPU
+typedef PotentialPairGPU< EvaluatorPairLJLambda, gpu_compute_ljtemp_forces > PotentialPairLJLambdaGPU;
 //! Pair potential force compute for gaussian forces on the GPU
 typedef PotentialPairGPU< EvaluatorPairGauss, gpu_compute_gauss_forces > PotentialPairGaussGPU;
 //! Pair potential force compute for slj forces on the GPU
