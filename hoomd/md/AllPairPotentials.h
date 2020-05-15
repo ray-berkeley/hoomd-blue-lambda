@@ -88,7 +88,7 @@ typedef PotentialPair<EvaluatorPairFourier> PotentialPairFourier;
 //! Pair potential force compute for lj forces on the GPU
 typedef PotentialPairGPU< EvaluatorPairLJ, gpu_compute_ljtemp_forces > PotentialPairLJGPU;
 //! Pair potential force compute for lj lambda forces on the GPU
-typedef PotentialPairGPU< EvaluatorPairLJLambda, gpu_compute_ljtemp_forces > PotentialPairLJLambdaGPU;
+typedef PotentialPairGPU< EvaluatorPairLJLambda, gpu_compute_ljlambdatemp_forces > PotentialPairLJLambdaGPU;
 //! Pair potential force compute for gaussian forces on the GPU
 typedef PotentialPairGPU< EvaluatorPairGauss, gpu_compute_gauss_forces > PotentialPairGaussGPU;
 //! Pair potential force compute for slj forces on the GPU

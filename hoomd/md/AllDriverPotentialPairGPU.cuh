@@ -16,6 +16,7 @@
 #include "EvaluatorPairDPDThermo.h"
 #include "EvaluatorPairDPDLJThermo.h"
 #include "EvaluatorPairFourier.h"
+#include "EvaluatorPairLJLambda.h"
 
 //! Compute lj pair forces on the GPU with PairEvaluatorLJ
 cudaError_t gpu_compute_ljtemp_forces(const pair_args_t& pair_args,
@@ -23,7 +24,7 @@ cudaError_t gpu_compute_ljtemp_forces(const pair_args_t& pair_args,
 
 //! Compute lj lambda pair forces on the GPU with PairEvaluatorLJ Lambda
 cudaError_t gpu_compute_ljlambdatemp_forces(const pair_args_t& pair_args,
-                                            const Scalar2 *d_params);
+                                            const typename EvaluatorPairLJLambda::param_type *d_params);
 
 //! Compute gauss pair forces on the GPU with PairEvaluatorGauss
 cudaError_t gpu_compute_gauss_forces(const pair_args_t& pair_args,
